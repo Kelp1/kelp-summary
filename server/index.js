@@ -11,7 +11,7 @@ const app = express();
 app.use(express.static(path.join(__dirname, '../client/dist')));
 app.use(bodyParser.json());
 
-app.get('/api/summaryInfos/:id', (req, res) => {
+app.get('/api/summary/:id', (req, res) => {
   db.fetchInfo({ id: req.params.id }, (err, result) => {
     if (err) {
       res.send(err);

@@ -1,27 +1,68 @@
 const mongoose = require('mongoose');
 
-const { Schema } = mongoose;
 mongoose.connect('mongodb://localhost/welp');
 
 // set schema
-const restaurantSchema = Schema({
+const restaurantSchema = new mongoose.Schema({
   id: Number,
-  name: String,
-  stars: Number,
-  reviewCount: Number,
-  restaurantsPriceRange2: Number,
-  categories: [],
-  claimed: Boolean,
-  address: String,
-  city: String,
-  state: String,
-  postalCode: String,
-  neighborhood: String,
-  phoneNumber: String,
-  businessId: String,
+  hours: {
+    monday: String,
+    tuesday: String,
+    wednesday: String,
+    thursday: String,
+    friday: String,
+    saturday: String,
+    sunday: String,
+  },
+  attributes: {
+    restaurantsPriceRange2: Number,
+    goodForMeal: {
+      dessert: Boolean,
+      latenight: Boolean,
+      lunch: Boolean,
+      dinner: Boolean,
+      breakfast: Boolean,
+      brunch: Boolean,
+    },
+    ambience: {
+      romantic: Boolean,
+      intimate: Boolean,
+      classy: Boolean,
+      hipster: Boolean,
+      divey: Boolean,
+      touristy: Boolean,
+      trendy: Boolean,
+      upscale: Boolean,
+      casual: Boolean,
+    },
+    restaurantsTableService: Boolean,
+    restaurantsGoodForGroups: Boolean,
+    restaurantsReservations: Boolean,
+    restaurantsAttire: String,
+    restaurantsDelivery: Boolean,
+    restaurantsTakeOut: Boolean,
+    caters: Boolean,
+    alcohol: String,
+    hasTV: Boolean,
+    wiFi: String,
+    noiseLevel: String,
+    goodForKids: Boolean,
+    dogsAllowed: Boolean,
+    outdoorSeating: Boolean,
+    businessAcceptsCreditCards: Boolean,
+    wheelchairAccessible: Boolean,
+    bikeParking: Boolean,
+    businessParking: {
+      garage: Boolean,
+      street: Boolean,
+      validated: Boolean,
+      lot: Boolean,
+      valet: Boolean,
+    },
+  },
 });
 // set model
-const Restaurants = mongoose.model('Restaurants', restaurantSchema);
+const Restaurants = mongoose.model('Restaurant', restaurantSchema);
 
 // get method
 function fetchInfo(query, callback) {

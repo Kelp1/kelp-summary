@@ -1,5 +1,7 @@
+/* eslint-env browser */
 import React from 'react';
 import axios from 'axios';
+import queryString from 'query-string';
 import ActionList from './ActionList';
 import SummaryInfo from './SummaryInfo';
 import MapBox from './MapBox';
@@ -13,7 +15,8 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/api/summaryInfos/8').then((response) => {
+    const parsed = queryString.parse(window.location.search).id;
+    axios.get(`/api/summary/${parsed}`).then((response) => {
       this.setState({
         data: response.data,
       });
