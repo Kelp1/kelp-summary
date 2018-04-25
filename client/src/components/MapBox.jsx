@@ -27,7 +27,7 @@ class MapBox extends React.Component {
     return (
       <div className="mapBox">
         <div className="mapBox-map">
-          <a href="/map/freshroll-vietnamese-rolls-and-bowls-san-francisco-6" className="biz-map-directions" data-component-bound="true">
+          <a href="#" className="biz-map-directions" data-component-bound="true">
             <img id="test" alt="Map" height="135" src={mapUrl} width="286" />
           </a>
         </div>
