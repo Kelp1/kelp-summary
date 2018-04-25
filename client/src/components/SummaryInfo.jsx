@@ -33,15 +33,15 @@ function SummaryInfo(props) {
 }
 
 SummaryInfo.propTypes = {
-  info: PropTypes = {
+  info: PropTypes.shape({
     businessId: PropTypes.string,
     name: PropTypes.string,
     stars: PropTypes.number,
     reviewCount: PropTypes.number,
-  },
-  attributes: PropTypes = {
+  }),
+  attributes: PropTypes.shape({
     restaurantsPriceRange2: PropTypes.number,
-  },
+  }),
 }.isRequired;
 
 export default SummaryInfo;

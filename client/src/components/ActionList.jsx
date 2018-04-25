@@ -17,9 +17,9 @@ function ActionList(props) {
 }
 
 ActionList.propTypes = {
-  info: PropTypes = {
+  info: PropTypes.shape({
     businessId: PropTypes.string,
-  },
-}.isRequired;
+  }).isRequired,
+};
 
 export default ActionList;
