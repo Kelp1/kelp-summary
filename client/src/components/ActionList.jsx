@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function ActionList(props) {
   return (
@@ -14,5 +15,11 @@ function ActionList(props) {
     </div>
   );
 }
+
+ActionList.propTypes = {
+  info: PropTypes = {
+    businessId: PropTypes.string,
+  },
+}.isRequired;
 
 export default ActionList;

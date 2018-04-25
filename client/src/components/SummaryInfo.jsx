@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const priceRange = {
   1: '$',
@@ -30,4 +31,17 @@ function SummaryInfo(props) {
     </div>
   );
 }
+
+SummaryInfo.propTypes = {
+  info: PropTypes = {
+    businessId: PropTypes.string,
+    name: PropTypes.string,
+    stars: PropTypes.number,
+    reviewCount: PropTypes.number,
+  },
+  attributes: PropTypes = {
+    restaurantsPriceRange2: PropTypes.number,
+  },
+}.isRequired;
+
 export default SummaryInfo;
