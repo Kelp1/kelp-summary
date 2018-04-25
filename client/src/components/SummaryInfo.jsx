@@ -20,7 +20,8 @@ function SummaryInfo(props) {
         <button className="reviewLine" id="restaurantDetail"><svg id="histogram" height="100%" viewBox="0 0 14 14" width="100%"><path d="M9 11V5h2v6H9zM6 3h2v8H6V3zM3 7h2v4H3V7z"></path></svg>Detail</button>
       </div>
       <div className="categoryClass">
-        <span id="priceRange">{priceRange[props.info.restaurantsPriceRange2]}</span>
+        {console.log(props.info.attributes)}
+        <span id="priceRange">{priceRange[props.info.attributes.restaurantsPriceRange2]}</span>
         <span id="bullet">•</span>
         <a className="categories" href="https://www.yelp.com/search?find_desc=mexican&find_loc=Financial+District,+San+Francisco,+CA">Mexican,</a>
         <a className="categories" href="https://www.yelp.com/search?find_desc=taco&find_loc=Financial+District,+San+Francisco,+CA">Taco,</a>

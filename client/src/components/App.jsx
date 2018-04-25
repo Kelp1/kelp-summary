@@ -10,7 +10,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: {},
+      data: '',
     };
   }
 
@@ -24,14 +24,17 @@ class App extends React.Component {
   }
 
   render() {
+    const summaryInfo = this.state.data && <SummaryInfo info={this.state.data} />;
+    const actionList = this.state.data && <ActionList info={this.state.data} />;
+    const mapBox = this.state.data && <MapBox info={this.state.data} />;
     return (
       <div className="headerContainer">
         <div id="header">
-          <SummaryInfo info={this.state.data} />
-          <ActionList info={this.state.data} />
+          {summaryInfo}
+          {actionList}
         </div>
         <div className="mapAndPhotos">
-          <MapBox info={this.state.data} />
+          {mapBox}
         </div>
       </div>
     );
