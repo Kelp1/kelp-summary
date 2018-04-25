@@ -26,15 +26,11 @@ class App extends React.Component {
   render() {
     const summaryInfo = this.state.data && <SummaryInfo info={this.state.data} />;
     const actionList = this.state.data && <ActionList info={this.state.data} />;
-    const mapBox = this.state.data && <MapBox info={this.state.data} />;
     return (
       <div className="headerContainer">
         <div id="header">
           {summaryInfo}
           {actionList}
-        </div>
-        <div className="mapAndPhotos">
-          {mapBox}
         </div>
       </div>
     );
