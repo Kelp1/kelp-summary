@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/welp');
+mongoose.connect('mongodb://172.17.0.2/welp');
 
 // set schema
 const restaurantSchema = new mongoose.Schema({
@@ -76,3 +76,4 @@ function fetchInfo(query, callback) {
 }
 // // export to  use
 module.exports.fetchInfo = fetchInfo;
+module.exports.Restaurants = Restaurants;
