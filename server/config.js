@@ -1,3 +1,0 @@
-const GOOGLE_MAPS_API_KEY = /* KEY AS STRING HERE */;
-
-export default GOOGLE_MAPS_API_KEY;
