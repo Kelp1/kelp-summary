@@ -30,13 +30,4 @@ for (let i = 0; i < 500000; i++) {
   if (idNum % 100000 === 0) { console.log(idNum); }
   fs.appendFileSync('./summaries.json', lineArr.join('\n'));
 }
-//lineArr.push(JSON.stringify(line))
-//fs.appendFileSync('title', lines.join('\n'));
 
-// const insertRestaurants = function () {
-//   restaurants.Restaurants.insertMany(restaurantsArr)
-//     .then(() => db.then(db => db.disconnect()))
-//     .catch((err) => { console.log('insert data error', err); return; });
-// };
-
-// insertRestaurants();
