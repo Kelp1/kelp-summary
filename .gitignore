@@ -3,3 +3,6 @@ client/dist/bundle.js
 .DS_Store
 server/config.js
 summaries.json
+restaurantsData
+categoryData
+.vscode
