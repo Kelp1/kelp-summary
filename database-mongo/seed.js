@@ -6,9 +6,9 @@ const fs = require('fs');
 
 var idNum = 0;
 
-for (let i = 0; i < 500000; i++) {
+for (let i = 0; i < 5000; i++) {
   var lineArr = [];
-  for (let j = 0; j < 20; j++) {
+  for (let j = 0; j < 2000; j++) {
     idNum++;
     let line = {
       id: idNum,
@@ -18,8 +18,8 @@ for (let i = 0; i < 500000; i++) {
       city: faker.address.city(),
       state: faker.address.state(),
       postalCode: faker.address.zipCode(),
-      latitude: faker.address.latitude(),
-      longitude: faker.address.longitude(),
+      latitude: Math.floor((Math.random() * 15) + 35),
+      longitude: Math.floor((Math.random() * 40) - 120),
       stars: Math.floor(Math.random() * Math.floor(6)),
       reviewCount: Math.floor(Math.random() * Math.floor(1000)),
       categories: [faker.commerce.productAdjective(), faker.commerce.product(), faker.commerce.productName()],
@@ -27,7 +27,7 @@ for (let i = 0; i < 500000; i++) {
     };
     lineArr.push(JSON.stringify(line));
   }
-  if (idNum % 100000 === 0) { console.log(idNum); }
+  if (idNum % 10000 === 0) { console.log(idNum); }
   fs.appendFileSync('./summaries.json', lineArr.join('\n'));
 }
 

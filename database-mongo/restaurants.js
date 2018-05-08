@@ -1,5 +1,6 @@
 // set schema
 const mongoose = require('mongoose');
+const db = require('./index.js');
 
 mongoose.Promise = global.Promise;
 
@@ -23,14 +24,22 @@ const restaurantSchema = new mongoose.Schema({
 const Restaurants = mongoose.model('Restaurant', restaurantSchema);
 
 // get method
-function fetchInfo(query, callback) {
-  Restaurants.find(query, (err, results) => {
+function fetchInfo(redis, query, callback) {
+  redis.get(query, function (err, reply) {
     if (err) {
-    // console.err(err);
+      callback(null);
+    } else if (reply) {
+      callback(JSON.parse(reply));
     } else {
-      callback(null, results);
+      Restaurants.find({id: query}, (err, result) => {
+        if (err) {
+        console.err(err);
+        } else {
+          redis.set(query, JSON.stringify(result), () => callback(result));
+        }
+      });
     }
-  });
+  })
 }
 // // export to  use
 module.exports.fetchInfo = fetchInfo;

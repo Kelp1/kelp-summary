@@ -17,12 +17,9 @@ CREATE TABLE restaurants (
   longitude DECIMAL,
   stars INT,
   reviewCount INT,
-  phone VARCHAR
-);
-
-CREATE TABLE categories (
-  id INT PRIMARY KEY NOT NULL,
+  phone VARCHAR,
   category1 VARCHAR,
   category2 VARCHAR,
   category3 VARCHAR
 );
+

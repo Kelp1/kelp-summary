@@ -1,13 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const priceRange = {
-  1: '$',
-  2: '$$',
-  3: '$$$',
-  4: '$$$$',
-};
-
 const claimInfo = 'This business has been claimed by the owner or a representative.';
 
 function SummaryInfo(props) {
@@ -23,7 +16,6 @@ function SummaryInfo(props) {
         <button className="reviewLine" id="restaurantDetail"><svg id="histogram" height="100%" viewBox="0 0 14 14" width="100%"><path d="M9 11V5h2v6H9zM6 3h2v8H6V3zM3 7h2v4H3V7z" /></svg>Detail</button>
       </div>
       <div className="categoryClass">
-        <span id="priceRange">{priceRange[props.info.attributes.restaurantsPriceRange2]}</span>
         <span id="bullet">•</span>
         {props.info.categories.slice(0, 3).map(category => <a key={category} className="categories" href="#">{category}</a>)}
         <button id="restaurantEdit"><svg id="pencil" height="100%" viewBox="0 0 14 14" width="100%"><path d="M12.95 3.05c0-.512-.195-1.023-.586-1.414a1.996 1.996 0 0 0-2.83 0L8.122 3.05 2.465 8.707 1.05 12.95l4.243-1.414L10.95 5.88l1.414-1.416c.39-.39.586-.902.586-1.414zm-8.197 7.61l-2.122.71.71-2.123 5.49-5.49 1.415 1.415-5.49 5.49z" /></svg>Edit</button>

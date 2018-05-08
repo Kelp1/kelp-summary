@@ -26,7 +26,7 @@ const fs = require('fs');
 //   reviewCount: Math.floor(Math.random() * Math.floor(1000)),
 //   phone: faker.phone.phoneNumber(),
 // ]
-//var count = 0;
+var count = 0;
 
 for (let i = 0; i < 5000; i++) { 
   var insertArr = [];
@@ -34,7 +34,7 @@ for (let i = 0; i < 5000; i++) {
     count++;
     const restaurant = `${count}|${faker.company.companyName()}|${faker.address.streetAddress()}|${faker.address.streetName()}|${faker.address.city()}|${faker.address.state()}\
 |${faker.address.zipCode()}|${faker.address.latitude()}|${faker.address.longitude()}|${Math.floor(Math.random() * Math.floor(6))}|${Math.floor(Math.random() * Math.floor(1000))}\
-|${faker.phone.phoneNumber()}`;
+|${faker.phone.phoneNumber()}|${faker.commerce.productAdjective()}|${faker.commerce.product()}|${faker.commerce.productName()}`;
     insertArr.push(restaurant);
   }
 
@@ -64,19 +64,3 @@ for (let i = 0; i < 5000; i++) {
   //       console.log(error);
   //     });
   // }
-
-var count2 = 0;
-
-for (let i = 0; i < 5000; i++) { 
-  var insertCatArr = [];
-  for(let j = 0; j < 2000; j++) {
-    count2++;
-    const category = `${count2}|${faker.commerce.productAdjective()}|${faker.commerce.product()}|${faker.commerce.productName()}`;
-    insertCatArr.push(category);
-  }
-
-  if (count2 % 10000 === 0) {
-    console.log ('cat batch', count2);
-  }
-  fs.appendFileSync('./categoryData', insertCatArr.join('\n') + '\n');
-}

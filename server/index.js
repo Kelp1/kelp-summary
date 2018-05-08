@@ -1,28 +1,46 @@
+require('newrelic'); 
+const cluster = require('cluster');
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const cors = require('cors');
+const redisClient = require('redis').createClient;
+const redis = redisClient(6379, 'localhost');
 
-const db = require('../database/index.js');
-
+const db = require('../database-mongo/restaurants.js');
 const PORT = 3001;
-
 const app = express();
 
-app.use(express.static(path.join(__dirname, '../client/dist')));
-app.use(bodyParser.json());
-app.use(cors());
+if (cluster.isMaster) {
+    // Count the machine's CPUs
+    var cpuCount = require('os').cpus().length;
 
-app.get('/api/summary/:id', (req, res) => {
-  db.fetchInfo({ id: req.params.id }, (err, result) => {
-    if (err) {
-      res.send(err);
-    } else {
-      res.send(result[0]);
+    // Create a worker for each CPU
+    for (var i = 0; i < cpuCount; i += 1) {
+        cluster.fork();
     }
-  });
-});
 
-app.listen(PORT, () => {
-  console.log(`Listening on http://localhost:${PORT}`);
-});
+} else {
+
+  app.use(express.static(path.join(__dirname, '../client/dist')));
+  app.use(bodyParser.json());
+  app.use(cors());
+
+  app.get('/api/summary/:id', (req, res) => {
+    db.fetchInfo(redis, req.params.id, (err, result) => {
+      if (err) {
+        console.log(err);
+        res.send(err);
+      } else {
+        res.send(result[0]);
+      }
+    });
+  });
+
+  app.listen(PORT, () => {
+    console.log(`Listening on http://localhost:${PORT}`);
+  });
+   
+}
+
+
