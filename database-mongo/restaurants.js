@@ -33,7 +33,7 @@ function fetchInfo(redis, query, callback) {
     } else {
       Restaurants.find({id: query}, (err, result) => {
         if (err) {
-        console.err(err);
+        console.log(err);
         } else {
           redis.set(query, JSON.stringify(result), () => callback(result));
         }

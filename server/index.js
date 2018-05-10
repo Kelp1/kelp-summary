@@ -27,12 +27,9 @@ if (cluster.isMaster) {
   app.use(cors());
 
   app.get('/api/summary/:id', (req, res) => {
-    db.fetchInfo(redis, req.params.id, (err, result) => {
-      if (err) {
-        console.log(err);
-        res.send(err);
-      } else {
-        res.send(result[0]);
+    db.fetchInfo(redis, req.params.id, (result) => {
+      if (result) {
+        res.send(result);
       }
     });
   });
