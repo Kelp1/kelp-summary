@@ -25,7 +25,8 @@ const client = {
   entry: `${SRC_DIR}/client.js`,
   output: {
     filename: 'app.js',
-    path: DIST_DIR
+    path: DIST_DIR,
+
   },
 }
 
@@ -33,7 +34,8 @@ const server = {
   entry: `${SRC_DIR}/server.js`,
   output: {
     filename: 'app-server.js',
-    path: DIST_DIR
+    path: DIST_DIR,
+    libraryTarget: 'commonjs-module'
   }
 }
 

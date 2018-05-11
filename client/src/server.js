@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './index.jsx';
+import App from './components/App';
+import MapBox from './components/MapBox';
 
-let Summary = App;
-
-export default Summary;
+export const Summary = App;
+export { MapBox };

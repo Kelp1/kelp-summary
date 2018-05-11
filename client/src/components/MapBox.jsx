@@ -16,7 +16,7 @@ class MapBox extends React.Component {
     const parsed = queryString.parse(window.location.search).id;
     axios.get(`http://localhost:3001/api/summary/${parsed}`).then((response) => {
       this.setState({
-        data: response.data,
+        data: response.data[0],
       });
     });
   }
@@ -25,7 +25,7 @@ class MapBox extends React.Component {
     if (!this.state.data) { return ''; }
     const mapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${this.state.data.latitude},${this.state.data.longitude}&zoom=12&size=238x135&markers=scale%3A2%7Cicon%3Ahttps%3A%2F%2Fyelp-images.s3.amazonaws.com%2Fassets%2Fmap-markers%2Fannotation_64x86.png%7C${this.state.data.latitude},${this.state.data.longitude}&key=${GOOGLE_MAPS_API_KEY}`;
     return ( 
-      <div className="mapBox mapAndPhotos">
+      <div className="mapBox">
         <div className="mapBox-map">
           <a href="#" className="biz-map-directions" data-component-bound="true">
             <img id="test" alt="Map" height="135" src={mapUrl} width="286" />

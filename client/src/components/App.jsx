@@ -32,7 +32,6 @@ class App extends React.Component {
           {summaryInfo}
           {actionList}
         </div>
-        <MapBox className="mapAndPhotos" />
       </div>
     );
   }
