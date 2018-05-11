@@ -4,6 +4,7 @@ import axios from 'axios';
 import queryString from 'query-string';
 import ActionList from './ActionList';
 import SummaryInfo from './SummaryInfo';
+import MapBox from './MapBox';
 
 class App extends React.Component {
   constructor(props) {
@@ -31,6 +32,7 @@ class App extends React.Component {
           {summaryInfo}
           {actionList}
         </div>
+        <MapBox className="mapAndPhotos" />
       </div>
     );
   }

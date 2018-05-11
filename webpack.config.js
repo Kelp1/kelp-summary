@@ -1,13 +1,9 @@
-var path = require('path');
-var SRC_DIR = path.join(__dirname, '/client/src');
-var DIST_DIR = path.join(__dirname, '/client/dist');
+const path = require('path');
+const webpack = require('webpack');
+const SRC_DIR = path.join(__dirname, '/client/src');
+const DIST_DIR = path.join(__dirname, '/client/dist');
 
-module.exports = {
-  entry: `${SRC_DIR}/index.jsx`,
-  output: {
-    filename: 'bundle.js',
-    path: DIST_DIR
-  },
+const common = {
   module: {
     rules: [
       {
@@ -24,3 +20,25 @@ module.exports = {
     extensions: ['.js', '.jsx'],
   }
 };
+
+const client = {
+  entry: `${SRC_DIR}/client.js`,
+  output: {
+    filename: 'app.js',
+    path: DIST_DIR
+  },
+}
+
+const server = {
+  entry: `${SRC_DIR}/server.js`,
+  output: {
+    filename: 'app-server.js',
+    path: DIST_DIR
+  }
+}
+
+module.exports = [
+  Object.assign({}, common, client),
+  Object.assign({}, common, server),
+]
+
