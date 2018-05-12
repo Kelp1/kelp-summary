@@ -12,7 +12,6 @@ body {
 /*sub box for summary*/
 #header,
 .mapAndPhotos {
-	width:950px;
 	margin: auto;
 	align-items: center;
 	display: flex;

@@ -30,10 +30,19 @@ const client = {
   },
 }
 
-const server = {
-  entry: `${SRC_DIR}/server.js`,
+const summaryServer = {
+  entry: `${SRC_DIR}/summaryServer.js`,
   output: {
-    filename: 'app-server.js',
+    filename: 'appSummary-server.js',
+    path: DIST_DIR,
+    libraryTarget: 'commonjs-module'
+  }
+}
+
+const mapServer = {
+  entry: `${SRC_DIR}/mapServer.js`,
+  output: {
+    filename: 'appMap-server.js',
     path: DIST_DIR,
     libraryTarget: 'commonjs-module'
   }
@@ -41,6 +50,7 @@ const server = {
 
 module.exports = [
   Object.assign({}, common, client),
-  Object.assign({}, common, server),
+  Object.assign({}, common, mapServer),
+  Object.assign({}, common, summaryServer),
 ]
 
