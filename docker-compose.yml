@@ -1,0 +1,26 @@
+vxersion: '2'
+
+services:
+  kelp-reviews:
+    image: ykent4/kelp-summaries:latest
+    depends_on:
+      - 'mongodb'
+      - 'mongo-seed'
+      - 'cache'
+    ports:
+      - '80:3001'
+
+  mongodb:
+    image: mongo:latest
+    volumes:
+      - ./home/ec2-user/data:/data/db
+    ports: 
+      - "27017:27017"
+  
+  mongo-seed:
+    image: ykent4/sdc-mongo-seed:latest
+    links:
+      - mongodb
+
+  cache:
+    image: redis:latest

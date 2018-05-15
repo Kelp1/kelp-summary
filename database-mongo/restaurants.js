@@ -21,7 +21,7 @@ const restaurantSchema = new mongoose.Schema({
 });
 
 // set model
-const Restaurants = mongoose.model('Restaurant', restaurantSchema);
+const Restaurant = mongoose.model('Restaurant', restaurantSchema);
 
 // get method
 function fetchInfo(redis, query, callback) {
@@ -31,7 +31,7 @@ function fetchInfo(redis, query, callback) {
     } else if (reply) {
       callback(JSON.parse(reply));
     } else {
-      Restaurants.find({id: query}, (err, result) => {
+      Restaurant.find({id: query}, (err, result) => {
         if (err) {
         console.log(err);
         } else {
@@ -43,4 +43,4 @@ function fetchInfo(redis, query, callback) {
 }
 // // export to  use
 module.exports.fetchInfo = fetchInfo;
-module.exports.Restaurants = Restaurants;
+module.exports.Restaurant = Restaurant;
