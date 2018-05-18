@@ -1,7 +1,7 @@
 version: '2'
 
 services:
-  kelp-reviews:
+  kelp-summary:
     image: ykent4/kelp-summaries:latest
     depends_on:
       - 'mongodb'

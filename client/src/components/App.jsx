@@ -16,7 +16,7 @@ class App extends React.Component {
 
   componentDidMount() {
     const parsed = queryString.parse(window.location.search).id;
-    axios.get(`http://ec2-18-191-82-187.us-east-2.compute.amazonaws.com/api/summary/${parsed}`).then((response) => {
+    axios.get(`http://ec2-18-188-81-168.us-east-2.compute.amazonaws.com/api/summary/${parsed}`).then((response) => {
       this.setState({
         data: response.data[0],
       });
