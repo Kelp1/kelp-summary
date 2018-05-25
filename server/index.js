@@ -13,16 +13,14 @@ const app = express();
 
 app.use(cors());
 
-// if (cluster.isMaster) {
-//     // Count the machine's CPUs
-//     var cpuCount = require('os').cpus().length;
+if (cluster.isMaster) {
+    var cpuCount = require('os').cpus().length;
 
-//     // Create a worker for each CPU
-//     for (var i = 0; i < cpuCount; i += 1) {
-//         cluster.fork();
-//     }
+    for (var i = 0; i < cpuCount; i += 1) {
+        cluster.fork();
+    }
 
-// } else {
+} else {
 
   app.use(express.static(path.join(__dirname, '../client/dist')));
   app.use(bodyParser.json());
@@ -39,6 +37,6 @@ app.use(cors());
     console.log(`Listening on ${PORT}`);
   });
    
-// }
+}
 
 
